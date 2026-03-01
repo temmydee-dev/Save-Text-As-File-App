@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Text as File</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <textarea spellcheck="false" placeholder="Enter a Text to save"
+            required>Lorem Ipsum is simply dummy text of the printing and type setting industry.</textarea>
+        <div class="file-options">
+            <div class="option file-name">
+                <label type="text">File Name</label>
+                <input type="text" spellcheck="false" placeholder="Enter File Name"></label>
+            </div>
+            <div class="option save-as">
+                <label>Save As</label>
+                <div class="select-menu">
+                    <select>
+                        <option value="application/msword">Doc File (.doc)</option> <!--WORKING-->
+                        <option value="application/pdf">PDF Document (.pdf)</option> <!--WORKING-->
+                        <option value="text/plain">Text File (.txt)</option> <!--WORKING-->
+                        <option value="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">Excel
+                            Spreadsheet (.xlsx)</option> <!--WORKING-->
+                        <option value="text/csv">CSV File (.csv)</option> <!--WORKING-->
+                        <option value="application/zip">Zip Archive (.zip)</option> <!--WORKING-->
+                        <option value="application/vnd.openxmlformats-officedocument.presentationml.presentation">
+                            PPTX File (.pptx)
+                        </option>
+                        <option value="text/javascript">JS File (.js)</option> <!--WORKING-->
+                        <option value="text/html">HTML File (.html)</option>
+                        <option value="image/svg+xml">SVG File</option> <!--WORKING-->
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button class="save-btn" type="button">Save As Doc File</button>
+    </div>
+
+    <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- JS libary for PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- JS libary for excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script> <!-- JS libary for zip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PptxGenJS/3.12.0/pptxgen.bundle.js"></script>
+    <!-- JS libary for PPT -->
+</body>
+
+
+</html>
