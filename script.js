@@ -11,7 +11,18 @@ selectMenu.addEventListener("change", () => {
 
 saveBtn.addEventListener("click", async () => {
     const fileType = selectMenu.value;
-    const fileName = fileNameInput.value || "documents";
+    const fileName = fileNameInput.value || "document";
+
+    
+    const extensionMap = {
+        "application/msword": "doc",
+        "text/html": "html",
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation": "pptx",
+        "text/csv": "csv",
+        "text/javascript": "js",
+    };
+
+    const extension = extensionMap[fileType] || "txt";
 
     // PDF
     if (fileType === "application/pdf") {
@@ -50,32 +61,29 @@ saveBtn.addEventListener("click", async () => {
         link.click();
         return;
     }
+   
+    // YET TO COMPLETE FIX
+    // // PPTX 
+    // if (fileType === "application/vnd.openxmlformats-officedocument.presentationml.presentation") {
+    //     let pptx = new PptxGenJS();
+    //     let slide = pptx.addSlide();
 
-    // PPT
-    if (fileType === "application/vnd.openxmlformats-officedocument.presentationml.presentation") {
-        let pptx = new PptxGenJS();
-        let slide = pptx.addSlide();
+    //     slide.addText(textarea.value, {
+    //         x: 1,
+    //         y: 1,
+    //         w: 8,
+    //         h: 4,
+    //         fontSize: 18
+    //     });
 
-        slide.addText(textarea.value, {
-            x: 1,
-            y: 1,
-            w: 8,
-            h: 4,
-            fontSize: 18
-        });
-
-        pptx.writeFile({ fileName: `${fileName}.pptx` });
-        return;
-    }
+    //     await pptx.writeFile({ fileName: `${fileName}.${extension}` });
+    //     return;
+    // }
 
     const blob = new Blob([textarea.value], { type: fileType });
     const fileUrl = URL.createObjectURL(blob);
 
     const link = document.createElement("a");
-    const extensionMap = {
-        "text/html": "html"
-    }
-    const extension = extensionMap[fileType] || "txt";
     link.download = `${fileName}.${extension}`;
     link.href = fileUrl;
     link.click();
